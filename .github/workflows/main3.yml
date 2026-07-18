@@ -1,0 +1,26 @@
+name: Bicycle_Backend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  myDeployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: For pick the repository
+        uses: actions/checkout@v4
+      - name: for connection
+        uses: appleboy/ssh-action@v1.2.0
+
+        with:
+          host: ${{secrets.IP}}
+          username: ${{secrets.USERNAME}}
+          password: ${{secrets.PASSWORD}}
+
+          script: |
+            cd /home/mamta/Bicycle_Backend
+            git pull origin main
+            sudo npm i
+            pm2 start index.js --name"Bicycle_Backend"
