@@ -23,4 +23,4 @@ jobs:
             cd /home/mamta/Bicycle_Backend
             git pull origin main
             sudo npm i
-            pm2 start index.js --name"Bicycle_Backend"
+            pm2 start index.js --name "Bicycle_Backend"
